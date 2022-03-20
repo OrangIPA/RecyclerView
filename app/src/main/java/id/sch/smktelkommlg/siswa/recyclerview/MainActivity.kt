@@ -2,6 +2,8 @@ package id.sch.smktelkommlg.siswa.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,5 +26,25 @@ class MainActivity : AppCompatActivity() {
         rvHeroes.layoutManager = LinearLayoutManager(this)
         val listHeroAdapter: ListHeroAdapter = ListHeroAdapter(list)
         rvHeroes.adapter = listHeroAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        setMode(item.itemId)
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setMode(selectedMode: Int){
+        when (selectedMode){
+            R.id.action_list -> {
+                showRecyclerList()
+            }
+            R.id.action_grid -> {}
+            R.id.action_cardview -> {}
+        }
     }
 }
